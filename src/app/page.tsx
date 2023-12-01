@@ -1,4 +1,5 @@
 import main from "@/app/home.module.scss"
+import { BottomBar } from "@/features/home/bottom_bar"
 
 export default function Home(){
   return(
@@ -62,11 +63,7 @@ export default function Home(){
                   </div>
               </div>
           </div>
-          <footer className={main.footer}>
-              <div className={main.foBtn}>
-                  <img src="/images/keyboard_voice.png" alt="マイク" />
-              </div>
-          </footer>
+          <BottomBar />
       </>
   )
 }
