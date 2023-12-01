@@ -1,95 +1,72 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+import main from "@/app/home.module.scss"
 
-export default function Home() {
-  return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+export default function Home(){
+  return(
+      <>
+          <div className={main.contentWrap}>
+              <div className={main.header}>
+                  <div className={main.hamburger}>
+                      <span className={main.hamLine}></span>
+                      <span className={main.hamLine}></span>
+                      <span className={main.hamLine}></span>
+                  </div>
+                  <div className={main.hamMenu}>
+                      <div className={main.hamburger}>
+                          <span className={main.hamLine}></span>
+                          <span className={main.hamLine}></span>
+                          <span className={main.hamLine}></span>
+                      </div>
+                      <div className={main.user}>
+                          <figure>
+                              <img src="" alt="" />
+                          </figure>
+                          <h1>ユーザー名</h1>
+                          <p className={main.icon}>
+                              <a className={main.iconedit} href="#">プロフィール</a>
+                          </p>
+                      </div>
+                      <div className={main.other}>
+                          <p className={main.icon}>
+                              <a className={main.iconhelp} href="#">よくある質問</a>
+                          </p>
+                          <p className={main.icon}>
+                              <a className={main.iconset} href="#">設定</a>
+                          </p>
+                          <p className={main.icon}>
+                              <a className={main.iconaut} href="#">ログアウト</a>
+                          </p>
+                      </div>
+                  </div>
+              </div>
+              <div className={main.scenery}>
+                  <div className={main.wall}>
+                      <picture className={main.onWall}>
+                          <img src="/images/curtain_left.png" alt="左側のカーテン" />
+                          <img src="/images/window.png" alt="窓" />
+                          <img src="/images/curtain_right.png" alt="右側のカーテン" />
+                      </picture>
+                  </div>
+                  <div className={main.desk}>
+                      <picture>
+                          <img src="/images/desk.png" alt="木目の机" />
+                      </picture>
+                  </div>
+              </div>
+              <div className={main.talkArea}>
+                  <div className={main.summary}>
+                      <div className={main.talkHead}>
+                      <h2 className={main.title}>トーク01</h2>
+                      <p className={main.time}><time dateTime="21:10">21:10</time></p>
+                      </div>
+                      <div className={main.talkConpo}></div>
+                  </div>
+              </div>
+          </div>
+          <footer className={main.footer}>
+              <div className={main.foBtn}>
+                  <img src="/images/keyboard_voice.png" alt="マイク" />
+              </div>
+          </footer>
+      </>
   )
 }
