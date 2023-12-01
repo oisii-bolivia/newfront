@@ -4,7 +4,9 @@ import image from "next/image";
 export function test(){
     <div>
         <img src="" alt="" />
-        <div></div>
+        <div>
+            <h1>test</h1>
+        </div>
     </div>
 }
 
