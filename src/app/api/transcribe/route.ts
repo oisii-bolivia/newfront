@@ -8,14 +8,15 @@ export const config = {
 };
 
 export async function POST(request: NextRequest) {
-  const body = await request.json();
+  const data = await request.formData();
+  const audioFile: any = data.get("file");
 
-  if (!body.file) {
+  if (!audioFile) {
     return NextResponse.json({ message: "file not found" });
   }
 
   const transcript = await openai.audio.transcriptions.create({
-    file: body.file,
+    file: audioFile,
     model: "whisper-1",
     language: "ja",
   });
