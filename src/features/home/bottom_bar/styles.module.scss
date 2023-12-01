@@ -1,0 +1,18 @@
+.box{
+    width: 390px;
+    height: 104px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #96CCC6;
+    position: fixed;
+    bottom: 0;
+    .circle {
+        width: 56px;
+        height: 56px;
+        padding: 12px;
+        border: solid 4px #fff;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+}
