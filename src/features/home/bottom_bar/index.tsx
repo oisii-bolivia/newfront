@@ -10,5 +10,5 @@ export const BottomBar: FC = () => {
                 </div>
             </div>
         </div>
-        )
+    )
 }
