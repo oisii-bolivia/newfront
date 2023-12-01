@@ -1,0 +1,31 @@
+.head{
+    width: 32px;
+    height: 32px;
+    position: fixed;
+    top: 24px;
+    left: 334px;
+    cursor: pointer;
+    .hamburger{
+        width: 32px;
+        height: 32px;
+        background: #A8D593;
+        border-radius: 8px;
+        position: relative;
+        .line{
+            position: absolute;
+            width: 16px;
+            height: 1px;
+            left: 8px;
+            background: #000;
+            &:first-child{
+                top: 10px;
+            }
+            &:nth-child(2){
+                top: 16px;
+            }
+            &:last-child{
+                top: 22px;
+            }
+        }
+    }
+}
