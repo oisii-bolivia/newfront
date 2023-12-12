@@ -1,6 +1,7 @@
 import main from "@/app/home.module.scss"
-import { BottomBar } from "@/features/home/bottom_bar"
 import { Hamburger } from "@/features/home/hamburger"
+import { HamMenu} from "@/features/home/ham_menu"
+import { BottomBar } from "@/features/home/bottom_bar"
 
 export default function Home(){
   return(
@@ -8,29 +9,6 @@ export default function Home(){
       <div className={main.contentWrap}>
         <div className={main.header}>
           <Hamburger />
-          <div className={main.hamMenu}>
-            <Hamburger />
-            <div className={main.user}>
-              <figure>
-                <img src="" alt="" />
-              </figure>
-              <h1>ユーザー名</h1>
-              <p className={main.icon}>
-                <a className={main.iconedit} href="#">プロフィール</a>
-              </p>
-            </div>
-            <div className={main.other}>
-              <p className={main.icon}>
-                <a className={main.iconhelp} href="#">よくある質問</a>
-              </p>
-              <p className={main.icon}>
-                <a className={main.iconset} href="#">設定</a>
-              </p>
-              <p className={main.icon}>
-                <a className={main.iconaut} href="#">ログアウト</a>
-              </p>
-            </div>
-          </div>
         </div>
         <div className={main.scenery}>
           <div className={main.wall}>
