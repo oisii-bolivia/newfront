@@ -1,7 +1,7 @@
 "use client";
 
 import { Box, Spacer, useDisclosure } from "@chakra-ui/react";
-import { FC, useState } from "react";
+import { FC } from "react";
 import { AuthTitle } from "../components/auth_title";
 import { SignupInputGroup } from "./form";
 import { AuthButtonGroup } from "../components/auth_button";

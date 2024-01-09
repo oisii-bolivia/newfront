@@ -1,5 +1,7 @@
 import { ChangeEvent, useState } from "react";
 import { AuthValidateError, authValidator } from "../validation";
+import { axiosClient } from "@/lib/api_client";
+import { useRouter } from "next/navigation";
 
 export type LoginValidateStatus = {
   email: AuthValidateError;
@@ -7,6 +9,7 @@ export type LoginValidateStatus = {
 };
 
 export const useLogin = () => {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -38,7 +41,17 @@ export const useLogin = () => {
     handleOnChnagePassword,
   };
 
-  const onLogin = async () => {};
+  const onLogin = async () => {
+    try {
+      const result = await axiosClient.post("/api/auth/login", {
+        email,
+        password,
+      });
+      if (result.status === 200) router.replace("/");
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   return { email, password, authValidateError, handler, onLogin };
 };

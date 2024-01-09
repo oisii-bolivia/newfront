@@ -1,12 +1,13 @@
 "use client";
 
-import { Box, Spacer, useDisclosure } from "@chakra-ui/react";
+import { Box, Spacer } from "@chakra-ui/react";
 import { FC } from "react";
 import { AuthTitle } from "../components/auth_title";
 import { AuthButtonGroup } from "../components/auth_button";
 import { pagesPath } from "@/lib/$path";
 import { LoginInputGroup } from "./form";
 import { useLogin } from "./hook";
+import { redirect } from "next/navigation";
 
 // あとで消せ
 function request1(): Promise<void> {
@@ -35,7 +36,11 @@ export const LoginPage: FC = () => {
       <Spacer h={"96px"} />
       <AuthButtonGroup
         firstButtonProps={{
-          text: "登録する",
+          text: "ログイン",
+          async: {
+            isAsync: true,
+            onClick: onLogin,
+          },
         }}
         lastButtonProps={{
           text: "戻る",
