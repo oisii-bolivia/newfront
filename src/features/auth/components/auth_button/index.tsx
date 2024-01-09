@@ -1,4 +1,5 @@
 import { AppButton, ButtonLinkProps } from "@/components/common/app_button";
+import { AppAsyncButton } from "@/components/common/app_button/async";
 import { VStack } from "@chakra-ui/react";
 import { FC } from "react";
 
@@ -6,6 +7,10 @@ type Props = {
   firstButtonProps: {
     text: string;
     linkProps?: ButtonLinkProps;
+    async?: {
+      isAsync: boolean;
+      onClick?: () => Promise<void>;
+    };
     isDisable?: boolean;
     onClick?: () => void;
   };
@@ -23,16 +28,28 @@ export const AuthButtonGroup: FC<Props> = ({
 }) => {
   return (
     <VStack gap={"22px"}>
-      <AppButton
-        text={firstButtonProps.text}
-        linkProps={firstButtonProps.linkProps}
-        buttonProps={{
-          w: "180px",
-          onClick: firstButtonProps.onClick,
-          isDisabled: firstButtonProps.isDisable,
-        }}
-        textProps={{ py: "14px" }}
-      />
+      {firstButtonProps.async?.isAsync ? (
+        <AppAsyncButton
+          text={firstButtonProps.text}
+          onClick={firstButtonProps.async?.onClick!}
+          buttonProps={{
+            w: "180px",
+            isDisabled: firstButtonProps.isDisable,
+          }}
+          textProps={{ py: "14px" }}
+        />
+      ) : (
+        <AppButton
+          text={firstButtonProps.text}
+          linkProps={firstButtonProps.linkProps}
+          buttonProps={{
+            w: "180px",
+            onClick: firstButtonProps.onClick,
+            isDisabled: firstButtonProps.isDisable,
+          }}
+          textProps={{ py: "14px" }}
+        />
+      )}
       <AppButton
         text={lastButtonProps.text}
         linkProps={lastButtonProps.linkProps}
