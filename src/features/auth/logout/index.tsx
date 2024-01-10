@@ -1,7 +1,8 @@
-import { Button } from "@chakra-ui/react";
+import { Button, Icon } from "@chakra-ui/react";
 import { FC } from "react";
 import { useLogout } from "./hook";
 import { AppAsyncButton } from "@/components/common/app_button/async";
+import { LogOut } from "lucide-react";
 
 // テスト用
 export const LogoutButton: FC = () => {
@@ -10,7 +11,11 @@ export const LogoutButton: FC = () => {
   return (
     <AppAsyncButton
       text="ログアウト"
-      buttonProps={{ py: "12px", px: "24px" }}
+      buttonProps={{
+        px: 0,
+        leftIcon: <Icon as={LogOut} color={"white"} />,
+        bgColor: "transparent",
+      }}
       onClick={logout}
     />
   );
