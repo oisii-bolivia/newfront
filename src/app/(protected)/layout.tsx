@@ -5,6 +5,7 @@ import * as context from "next/headers";
 import { redirect } from "next/navigation";
 import { useHydrateAtoms } from "jotai/utils";
 import { UserProvider } from "@/store/user_atom";
+import { Box } from "@chakra-ui/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,9 +24,9 @@ export default async function ProtectedLayout({
   if (!session) redirect("/login");
 
   return (
-    <div>
+    <>
       {children}
       <UserProvider user={session.user} />
-    </div>
+    </>
   );
 }

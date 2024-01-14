@@ -7,20 +7,23 @@ import { currentUserAtom } from "@/store/user_atom";
 import { Box, useDisclosure } from "@chakra-ui/react";
 import { MenuButton } from "./menu_button";
 import { MenuDrawer } from "./menu_drawer";
+import { BottomVoiceInput } from "./bottom_voice_input";
+import { HomeWindow } from "./window";
+import { HomeDesk } from "./desk";
+import { TalkBox } from "./talk_box";
 
 export const HomePage: FC = () => {
   const currentUser = useAtomValue(currentUserAtom);
   const { isOpen, onClose, onOpen } = useDisclosure();
 
   return (
-    <Box>
+    <Box w={"100%"} h={"100vh"}>
+      <HomeWindow />
+      <HomeDesk />
+      <TalkBox />
       <MenuButton onClick={onOpen} />
-      <p>temp home</p>
-      <p>{currentUser?.email}</p>
-      <p>{currentUser?.userId}</p>
-      <p>{currentUser?.username}</p>
-      <LogoutButton />
       <MenuDrawer isOpen={isOpen} onClose={onClose} user={currentUser} />
+      <BottomVoiceInput />
     </Box>
   );
 };
