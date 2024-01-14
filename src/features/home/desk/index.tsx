@@ -10,7 +10,7 @@ export const HomeDesk = () => {
         left={"50%"}
         transform={"translateX(-50%)"}
       >
-        <Image src="images/flower.svg" alt={"花"} />
+        <Image src="images/flower-4.svg" alt={"花"} />
       </Box>
       <Image w={"100%"} objectFit={"cover"} src="images/desk.png" alt="机" />
     </Box>

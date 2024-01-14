@@ -1,5 +1,5 @@
 import { Box, Icon } from "@chakra-ui/react";
-import { Mic } from "lucide-react";
+import { Mic, MicOff } from "lucide-react";
 import { BOTTOM_VOICE_INPUT_HEIGHT } from "../constants";
 
 export const BottomVoiceInput = () => {
