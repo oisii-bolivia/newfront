@@ -35,7 +35,7 @@ export const HomePage: FC = () => {
   return (
     <Box w={"100%"} h={"100vh"}>
       <HomeWindow />
-      <HomeDesk message={currentTranscription} />
+      <HomeDesk message={messages[0].message} />
       <TalkBox messages={messages} />
       <MenuButton onClick={onOpen} />
       <MenuDrawer isOpen={isOpen} onClose={onClose} user={currentUser} />
