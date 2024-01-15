@@ -5,3 +5,5 @@ export const openai = new OpenAI({
   apiKey: OPENAI_API_KEY,
   dangerouslyAllowBrowser: true,
 });
+
+export const maxToken = 128;
