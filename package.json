@@ -9,7 +9,8 @@
     "build": "next build && pathpida --ignorePath .gitignore",
     "start": "NODE_OPTIONS=--experimental-global-webcrypto next start",
     "lint": "next lint",
-    "preinstall": "npx only-allow pnpm"
+    "preinstall": "npx only-allow pnpm",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@chakra-ui/next-js": "^2.2.0",
