@@ -29,12 +29,12 @@ export async function POST(req: NextRequest) {
   if (result == null || result === "")
     return NextResponse.json({ msg: "message not found" }, { status: 400 });
 
-  const messages = await prisma.message.create({
+  const message = await prisma.message.create({
     data: {
       message: result,
       userId: userId,
     },
   });
 
-  return NextResponse.json({ messages }, { status: 200 });
+  return NextResponse.json({ message }, { status: 200 });
 }

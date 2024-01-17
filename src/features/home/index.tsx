@@ -10,14 +10,12 @@ import { BottomVoiceInput } from "./bottom_voice_input";
 import { HomeWindow } from "./window";
 import { HomeDesk } from "./desk";
 import { TalkBox } from "./talk_box";
-import { transcriptAtom } from "@/store/transcription";
 import { axiosClient } from "@/lib/api_client";
 import { Message } from "@prisma/client";
 
 export const HomePage: FC = () => {
   const currentUser = useAtomValue(currentUserAtom);
   const { isOpen, onClose, onOpen } = useDisclosure();
-  const currentTranscription = useAtomValue(transcriptAtom);
   const [messages, setMessages] = useState<Message[]>([]);
 
   const getMessages = async (userId: string) => {
@@ -28,6 +26,10 @@ export const HomePage: FC = () => {
     setMessages(messages);
   };
 
+  const addMessage = (message: Message) => {
+    setMessages((pre) => [...pre, message]);
+  };
+
   useEffect(() => {
     if (currentUser?.userId != null) getMessages(currentUser?.userId!);
   }, [currentUser]);
@@ -35,11 +37,11 @@ export const HomePage: FC = () => {
   return (
     <Box w={"100%"} h={"100vh"}>
       <HomeWindow />
-      <HomeDesk message={messages[0].message} />
+      <HomeDesk message={messages[messages.length - 1]?.message} />
       <TalkBox messages={messages} />
       <MenuButton onClick={onOpen} />
       <MenuDrawer isOpen={isOpen} onClose={onClose} user={currentUser} />
-      <BottomVoiceInput />
+      <BottomVoiceInput onCreateMessage={addMessage} />
     </Box>
   );
 };
