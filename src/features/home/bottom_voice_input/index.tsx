@@ -4,17 +4,21 @@ import { Box, Icon } from "@chakra-ui/react";
 import { Mic, MicOff } from "lucide-react";
 import { BOTTOM_VOICE_INPUT_HEIGHT } from "../constants";
 import { useTranscriptionRecorder } from "./hook";
-import { FC, useEffect } from "react";
+import { FC, useEffect, useState } from "react";
 import { useAtomValue } from "jotai";
 import { axiosClient } from "@/lib/api_client";
 import { currentUserAtom } from "@/store/user_atom";
-import { Message } from "@prisma/client";
+import { Flower, Message } from "@prisma/client";
 
 type Props = {
   onCreateMessage: (message: Message) => void;
+  onUpdateFlower: (flower: Flower) => void;
 };
 
-export const BottomVoiceInput: FC<Props> = ({ onCreateMessage }) => {
+export const BottomVoiceInput: FC<Props> = ({
+  onCreateMessage,
+  onUpdateFlower,
+}) => {
   const { startRecording, stopRecording, isRecording, text } =
     useTranscriptionRecorder();
 
@@ -30,9 +34,22 @@ export const BottomVoiceInput: FC<Props> = ({ onCreateMessage }) => {
     onCreateMessage(msg);
   };
 
+  const updateCount = async () => {
+    const res = await axiosClient.post("/api/flower", {
+      userId: currentUser?.userId,
+    });
+    const flower = res.data.flower as Flower;
+    onUpdateFlower(flower);
+  };
+
+  const handleOnCreateMessage = async () => {
+    await createNewMessage();
+    await updateCount();
+  };
+
   useEffect(() => {
     if (text == null || text === "") return;
-    createNewMessage();
+    handleOnCreateMessage();
   }, [text]);
 
   return (

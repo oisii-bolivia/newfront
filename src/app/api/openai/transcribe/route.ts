@@ -2,12 +2,6 @@ import { openai } from "@/config/api";
 import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
-
 const filePath = "tmp/input.wav";
 
 export async function POST(request: NextRequest) {
