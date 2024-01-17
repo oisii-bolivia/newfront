@@ -18,6 +18,7 @@ model User {
   updatedAt DateTime @updatedAt
 
   message Message[]
+  flower Flower?
 
   auth_session Session[]
   key          Key[]
@@ -49,6 +50,19 @@ model Message {
   message String
 
   createdAt DateTime @default(now())
+
+  @@index([userId])
+}
+
+model Flower {
+  id String @id @unique @default(cuid())
+  userId String @unique
+  user User @relation(references: [id], fields: [userId])
+
+  talkCount Int
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@index([userId])
 }
