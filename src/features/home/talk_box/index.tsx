@@ -32,7 +32,7 @@ export const TalkBox: FC<Props> = ({ messages }) => {
       );
 
     return messages.map((message) => (
-      <TalkContentCard key={message.id} content={message?.message} />
+      <TalkContentCard key={message?.id} content={message?.message} />
     ));
   };
 

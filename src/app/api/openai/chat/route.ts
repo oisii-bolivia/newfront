@@ -24,8 +24,6 @@ export async function POST(req: NextRequest) {
 
   const result = comp.choices[0].message.content;
 
-  console.log(result);
-
   if (result == null || result === "")
     return NextResponse.json({ msg: "message not found" }, { status: 400 });
 

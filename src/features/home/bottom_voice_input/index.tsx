@@ -25,7 +25,8 @@ export const BottomVoiceInput: FC<Props> = ({ onCreateMessage }) => {
       message: text,
       userId: currentUser?.userId,
     });
-    const msg = res.data.msg as Message;
+    const msg = res.data.message as Message;
+
     onCreateMessage(msg);
   };
 
