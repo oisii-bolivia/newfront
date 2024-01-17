@@ -8,8 +8,6 @@ import {
   WINDOW_HEIGHT,
 } from "../constants";
 import { unitRemover } from "@/util/unit_remover";
-import { useAtomValue } from "jotai";
-import { currentUserAtom } from "@/store/user_atom";
 import { Message } from "@prisma/client";
 import { FC } from "react";
 import { TalkContentCard } from "../talk_content_card";
@@ -34,7 +32,7 @@ export const TalkBox: FC<Props> = ({ messages }) => {
       );
 
     return messages.map((message) => (
-      <TalkContentCard key={message.id} content={message.message} />
+      <TalkContentCard key={message.id} content={message?.message} />
     ));
   };
 

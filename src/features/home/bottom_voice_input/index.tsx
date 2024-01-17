@@ -4,29 +4,33 @@ import { Box, Icon } from "@chakra-ui/react";
 import { Mic, MicOff } from "lucide-react";
 import { BOTTOM_VOICE_INPUT_HEIGHT } from "../constants";
 import { useTranscriptionRecorder } from "./hook";
-import { useEffect } from "react";
-import { useAtomValue, useSetAtom } from "jotai";
-import { transcriptAtom } from "@/store/transcription";
+import { FC, useEffect } from "react";
+import { useAtomValue } from "jotai";
 import { axiosClient } from "@/lib/api_client";
 import { currentUserAtom } from "@/store/user_atom";
+import { Message } from "@prisma/client";
 
-export const BottomVoiceInput = () => {
+type Props = {
+  onCreateMessage: (message: Message) => void;
+};
+
+export const BottomVoiceInput: FC<Props> = ({ onCreateMessage }) => {
   const { startRecording, stopRecording, isRecording, text } =
     useTranscriptionRecorder();
 
   const currentUser = useAtomValue(currentUserAtom);
-  const setCurrentTranscription = useSetAtom(transcriptAtom);
 
   const createNewMessage = async () => {
-    await axiosClient.post("/api/openai/chat", {
+    const res = await axiosClient.post("/api/openai/chat", {
       message: text,
       userId: currentUser?.userId,
     });
+    const msg = res.data.msg as Message;
+    onCreateMessage(msg);
   };
 
   useEffect(() => {
     if (text == null || text === "") return;
-    setCurrentTranscription(text);
     createNewMessage();
   }, [text]);
 
